@@ -1,0 +1,10 @@
+/**
+ * All your custom CSS should go into this file
+ */
+
+ input[type='file'] {
+	width: 150px;
+	color: transparent;
+}
+
+.ui-autocomplete { position: absolute; cursor: default; z-index: 9999; font-family: Tahoma, sans-serif; }

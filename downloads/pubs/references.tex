@@ -1,0 +1,31 @@
+% tex this document, then bibtex the resulting .aux file...
+% this will create .bbl and .blg files.  
+% finally, tex this document again, twice (to get refs right)
+
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+
+\usepackage{url}
+\usepackage{alltt}
+\usepackage{listings}
+\usepackage{fancyvrb}
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage[T1]{fontenc}
+\usepackage{verbatim}
+\usepackage{aeguill}  % usefull for pdflatex
+\usepackage[left=20mm,right=20mm,bottom=20mm,top=15mm]{geometry}
+\usepackage[Bjornstrup]{fncychap}
+
+\begin{document}
+
+\pagestyle{empty}
+\bibliographystyle{amsplain}
+
+\nocite{*}
+
+\hfill \today 
+
+\bibliography{pubs}
+
+\end{document}

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <xs:simpleType name="the-Status">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="concluded"/>
+      <xs:enumeration value="undergoing"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="the-Type">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="phd"/>
+      <xs:enumeration value="msc"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="thesup">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="the"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="the">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="student"/>
+        <xs:element ref="document"/>
+        <xs:element minOccurs="0" ref="cosup"/>
+        <xs:element ref="inst"/>
+        <xs:element minOccurs="0" ref="beginyear"/>
+        <xs:element minOccurs="0" ref="endyear"/>
+      </xs:sequence>
+      <xs:attribute name="status" use="required" type="xs:NCName"/>
+      <xs:attribute name="type" use="required" type="xs:NCName"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="student">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="name"/>
+        <xs:element minOccurs="0" ref="program"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="program">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="desc"/>
+        <xs:element minOccurs="0" ref="address"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="desc" type="xs:string"/>
+  <xs:element name="address" type="xs:string"/>
+  <xs:element name="document">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="title"/>
+        <xs:element minOccurs="0" ref="doi"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="title" type="xs:string"/>
+  <xs:element name="doi" type="xs:anyURI"/>
+  <xs:element name="cosup">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="name"/>
+        <xs:element ref="inst"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="beginyear" type="xs:integer"/>
+  <xs:element name="endyear" type="xs:integer"/>
+  <xs:element name="name" type="xs:string"/>
+  <xs:element name="inst" type="xs:string"/>
+</xs:schema>

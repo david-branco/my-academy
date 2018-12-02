@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+
+    <xs:element name="theexams">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" ref="theexam"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="theexam">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="student">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="name" type="xs:string"/>
+                            <xs:element minOccurs="0" name="id" type="xs:ID"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="document">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="title" type="xs:string"/>
+                            <xs:element minOccurs="0" name="thesis" type="xs:anyURI"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="inst" type="xs:string"/>
+                <xs:element name="date">
+                    <xs:complexType>
+                        <xs:simpleContent>
+                            <xs:extension base="xs:string">
+                                <xs:attribute name="ansi" type="xs:date"/>
+                            </xs:extension>
+                        </xs:simpleContent>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+            <xs:attribute name="type" type="aTtype" use="required"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:simpleType name="aTtype">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="phd"/>
+            <xs:enumeration value="msc"/>
+        </xs:restriction>
+    </xs:simpleType>
+</xs:schema>
